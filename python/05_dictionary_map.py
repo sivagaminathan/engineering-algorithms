@@ -15,9 +15,13 @@ def main():
     student["age"] = 31
     print(student["age"])  # Output: 31
 
-    # DELETE
-    student.pop("languages")
+    # DELETE a key
+    student.pop("age")
     print(student)  # Output: {'name': 'Siva', 'age':
+
+    # APPEND value to list in dictionary
+    student["languages"].append("C++")
+    print(student["languages"])  # Output: ['Python', 'Java', 'C++
 
     # ITERATE
     for key, value in student.items():
