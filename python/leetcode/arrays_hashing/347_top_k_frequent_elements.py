@@ -20,7 +20,10 @@ class Solution:
             count[num] = count.get(num, 0) + 1
 
         # Step 2: buckets init buckets with freq as index and list of nums as value
-        buckets = [[] for _ in range(len(nums)+1)]
+        buckets = []
+
+        for i in range(len(nums)+1):
+            buckets.append([])
 
         for num, freq in count.items():
             buckets[freq].append(num)
