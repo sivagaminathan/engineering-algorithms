@@ -33,6 +33,7 @@ class Solution:
 
         # visited set for detecting cycles
         visited = set()
+        done = set()
 
         # Step 3: DFS function
         def dfs(course):
@@ -41,20 +42,19 @@ class Solution:
             if course in visited:
                 return False
 
-            # no prerequisites
-            if preMap[course] == []:
-                return True
-
+            # cycle detected 
+            if course in done:
+                return True 
+            
             visited.add(course)
 
             for prereq in preMap[course]:
-
                 result = dfs(prereq)
-
                 if result == False:
                     return False
 
             visited.remove(course)
+            done.add(course)
 
             # mark course as completed
             preMap[course] = []
@@ -85,4 +85,16 @@ if __name__ == "__main__":
 
     result = s.canFinish(numCourses, prerequisites)
 
+    print("Output:", result)
+
+    
+    numCourses = 2
+    prerequisites = [[1,0], [0,1]]
+
+    print("Input:")
+    print("Courses:", numCourses)
+    print("Prerequisites:", prerequisites)
+
+    result = s.canFinish(numCourses, prerequisites)
+    
     print("Output:", result)
